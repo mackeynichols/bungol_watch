@@ -65,7 +65,7 @@ class BungolScraper:
 		# get more detailed listing data (unit amenities, size details, etc)
 		for unit in pricing_response_payload:
 			address_listing_details_response = self.req.get( "https://www.bungol.ca/api/get-listing-data/"+unit['mls_number']+"-"+str(unit['id']), data = json.dumps(login_payload), headers = self.req_headers ) 
-			unit['listing_details'] = address_listing_details_response.text
+			unit['listing_details'] = json.loads(address_listing_details_response.text)
 			response_payload.append( unit )
 
 		return response_payload
