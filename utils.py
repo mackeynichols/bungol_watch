@@ -9,6 +9,7 @@ class BungolScraper:
 	def __init__(self, address):	
 		
 		self.address = address.upper()
+		print( "Received address: " + self.address)
 
 		# grab the token you need to make requests to the site
 		self.req = requests.Session()
@@ -67,6 +68,7 @@ class BungolScraper:
 			address_listing_details_response = self.req.get( "https://www.bungol.ca/api/get-listing-data/"+unit['mls_number']+"-"+str(unit['id']), data = json.dumps(login_payload), headers = self.req_headers ) 
 			unit['listing_details'] = json.loads(address_listing_details_response.text)
 			response_payload.append( unit )
+
 
 		return response_payload
 
