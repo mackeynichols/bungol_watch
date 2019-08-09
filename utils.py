@@ -50,7 +50,13 @@ class BungolScraper:
 		login_payload = {"csrfmiddlewaretoken" : self.csrf_token}
 		coordinates_response =  json.loads(self.req.get( "https://www.bungol.ca/api/property-search-autocomplete/?value="+self.address.replace(" ", "%20"), data = json.dumps(login_payload), headers = self.req_headers ).text )
 
-		return { "latitude" : coordinates_response["addresses"][0]['la'], "longitude" : coordinates_response["addresses"][0]['lo'] }
+		try:
+			address_coordinates = { "latitude" : coordinates_response["addresses"][0]['la'], "longitude" : coordinates_response["addresses"][0]['lo'] }
+			return address_coordinates
+
+		except:
+			print("Error when searching for " + self.address)
+ 
 
 
 	def get_address_payload(self):
