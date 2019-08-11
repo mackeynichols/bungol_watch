@@ -5,6 +5,7 @@ import utils
 import os
 import datetime
 import json
+import smtplib
 
 app = Flask(__name__)
 
@@ -46,6 +47,15 @@ def index(input_address):
 			print("There is a change between this call and the last one!")
 			
 			# Send an alert here
+			# We'll want to parameterize these inputs
+			# We'll want to turn this into some class method
+			smtpserver = smtplib.SMTP("xxx", 123)
+			smtpserver.ehlo()
+			smtpserver.starttls()
+			smtpserver.ehlo()
+			smtpserver.login('xxx', 'xxx')
+			smtpserver.sendmail("noshp", "xxx", "this_is_email_text")
+			smtpserver.close()
 			
 
 			# write new file

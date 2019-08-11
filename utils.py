@@ -1,7 +1,7 @@
 #! python3
 # utils.py - a series of tools for the bungol_watch scraper
 
-import requests, json
+import requests, json, os, smtplib
 
 class BungolScraper:
 
@@ -84,6 +84,10 @@ class BungolScraper:
 
 
 if __name__ == "__main__":
-	bs = BungolScraper("55 EAST LIBERTY ST")
-	print( bs.get_address_payload() )
+	input_address = "55 EAST LIBERTY ST"
+	bs = BungolScraper(input_address)
+	
+	this_call_results = bs.get_address_payload() 
+	
+
 
