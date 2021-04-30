@@ -13,5 +13,5 @@ MarkupSafe==1.1.1
 pygeocoder==1.2.5
 requests==2.22.0
 soupsieve==1.9.2
-urllib3==1.25.3
+urllib3==1.25.8
 Werkzeug==0.15.5
